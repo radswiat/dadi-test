@@ -1,0 +1,95 @@
+{
+  "fields": {
+    "title": {
+      "type": "String",
+      "label": "Document name",
+      "comments": "Document name for a document",
+      "validation": {},
+      "required": true,
+      "message": "can't be empty",
+      "display": {
+        "index": true,
+        "edit": true
+      }
+    },
+    "description": {
+      "type": "String",
+      "label": "Document description",
+      "comments": "Document description",
+      "validation": {
+      },
+      "required": true,
+      "message": "can't be empty",
+      "display": {
+        "index": true,
+        "edit": true
+      }
+    },
+    "urlFriendly": {
+      "type": "String",
+      "label": "Friendly generated url",
+      "comments": "URL-friendly name",
+      "validation": {},
+      "required": false,
+      "display": {
+        "index": true,
+        "edit": true
+      }
+    }
+  },
+  "settings": {
+    "compose": true,
+    "cache": false,
+    "authenticate": true,
+    "callback": null,
+    "defaultFilters": null,
+    "fieldLimiters": null,
+    "count": 40,
+    "sort": "title",
+    "sortOrder": 1,
+    "storeRevisions": true,
+    "revisionCollection": "documentsHistory",
+    "index": {
+      "enabled": true,
+      "keys": {
+        "title": 1
+      }
+    },
+    "description": "Represents CMS documents",
+    "hooks": {
+      "beforeCreate": [
+        {
+          "hook": "slugify",
+          "options": {
+            "from": "title",
+            "to": "urlFriendly"
+          }
+        }
+      ],
+      "beforeUpdate": [
+        {
+          "hook": "slugify",
+          "options": {
+            "from": "title",
+            "to": "urlFriendly"
+          }
+        },
+        {
+          "hook": "idify",
+          "options": {
+            "index": ["dataModel", "categories"],
+            "key": "_id"
+          }
+        },
+        {
+          "hook": "slugifyAdv",
+          "options": {
+            "index": ["categories"],
+            "key": "title",
+            "to": "urlFriendly"
+          }
+        }
+      ]
+    }
+  }
+}

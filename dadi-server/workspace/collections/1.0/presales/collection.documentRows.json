@@ -1,0 +1,86 @@
+{
+  "fields": {
+    "documentId": {
+      "type": "String",
+      "label": "ID of document it belongs to",
+      "validation": {},
+      "required": true,
+      "message": "can't be empty",
+      "display": {
+        "index": true,
+        "edit": true
+      }
+    },
+    "categoryId": {
+      "type": "String",
+      "label": "ID of document category it belongs to",
+      "validation": {},
+      "required": true,
+      "message": "can't be empty",
+      "display": {
+        "index": true,
+        "edit": true
+      }
+    },
+    "status": {
+      "type": "String",
+      "label": "Status of the document ['new', 'edited', 'published', 'qued']",
+      "validation": {},
+      "required": true,
+      "message": "can't be empty",
+      "display": {
+        "index": true,
+        "edit": true
+      }
+    },
+    "data": {
+      "type": "Object",
+      "label": "Data",
+      "validation": {},
+      "required": true,
+      "message": "can't be empty",
+      "display": {
+        "index": true,
+        "edit": true
+      }
+    },
+    "urlFriendly": {
+      "type": "String",
+      "label": "Friendly generated url",
+      "comments": "URL-friendly name",
+      "validation": {},
+      "required": false,
+      "display": {
+        "index": true,
+        "edit": true
+      }
+    }
+  },
+  "settings": {
+    "compose": false,
+    "cache": false,
+    "authenticate": true,
+    "callback": null,
+    "defaultFilters": null,
+    "fieldLimiters": null,
+    "count": 40,
+    "sort": "title",
+    "sortOrder": 1,
+    "storeRevisions": true,
+    "revisionCollection": "documentRowsHistory",
+    "index": {
+      "enabled": true,
+      "keys": {
+        "documentId": 1,
+        "categoryId": 1
+      }
+    },
+    "description": "Represents CMS documents",
+    "hooks": {
+      "beforeCreate": [
+      ],
+      "beforeUpdate": [
+      ]
+    }
+  }
+}
